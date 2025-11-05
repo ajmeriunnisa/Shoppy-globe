@@ -1,17 +1,12 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import { TiShoppingCart } from "react-icons/ti";
-import logo from "../assets/ShoppyGlobe.png"
 
 function Header() {
   return (
     <header>
-      <nav className="flex justify-between items-center bg-blue-50 px-10 py-4 shadow-sm">
-        <Link to="/"><img
-            src={logo}
-            alt="ShoppyGlobe Logo"
-            className="h-24 w-30 cursor-pointer"
-          />
+      <nav className="flex justify-between items-center bg-white px-10 py-6 shadow-sm">
+        <Link to="/"><h1 className="font-extrabold tracking-tighter text-blue-800 text-3xl">ShoppyGlobe</h1>
         </Link>
 
         <ul className="flex items-center space-x-6 text-[20px] font-semibold">
