@@ -4,8 +4,8 @@ import { TiShoppingCart } from "react-icons/ti";
 
 function Header() {
   return (
-    <header>
-      <nav className="flex justify-between items-center bg-white px-10 py-6 shadow-sm">
+    <header >
+      <nav className="flex justify-between items-center bg-white px-10 py-6 shadow-md">
         <Link to="/"><h1 className="font-extrabold tracking-tighter text-blue-800 text-3xl">ShoppyGlobe</h1>
         </Link>
 

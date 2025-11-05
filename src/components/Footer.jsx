@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 function Footer() {
     return (
         // ===== Footer Section =====
-        <footer className="fixed bottom-0 left-0 w-full bg-gray-200 mt-12 py-6 text-center border-t border-gray-200">
+        <footer className=" bottom-0 left-0 w-full bg-blue-50 mt-12 py-6 text-center border-t border-gray-200">
 
             {/* ===== Copyright Text ===== */}
             <p className="text-gray-600 text-sm">
