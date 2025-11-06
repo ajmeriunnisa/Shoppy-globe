@@ -32,12 +32,18 @@ function ProductDetails() {
   }, [id]);
 
   // Handle loading state
-  if (loading)
-    return (
-    <p className="text-center text-red-500 py-10 text-lg">
-        Loading product details...
-    </p>
+  if (loading) {
+  return (
+    <div className="animate-pulse flex flex-col md:flex-row items-center justify-center space-x-4 py-10">
+      <div className="w-60 h-60 bg-gray-300 rounded-lg"></div>
+      <div className="flex-1 space-y-4 mt-6 md:mt-0">
+        <div className="h-6 bg-gray-300 rounded w-3/4"></div>
+        <div className="h-4 bg-gray-300 rounded w-1/2"></div>
+        <div className="h-4 bg-gray-300 rounded w-2/3"></div>
+      </div>
+    </div>
   );
+}
 
   // Handle error state
   if (error)
