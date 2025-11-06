@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import useProducts from "../CustomHook/useProducts";
+import ProductItem from "./ProductItem";
 import { FaStar, FaSearch } from "react-icons/fa";
 
 function ProductList() {
@@ -14,7 +15,6 @@ function ProductList() {
     product.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  // Loading and error states
   if (loading)
     return (
       <p className="text-center text-gray-500 py-10 text-lg">
@@ -31,12 +31,11 @@ function ProductList() {
 
   return (
     <div className="max-w-7xl mx-auto px-6 py-10">
-      {/* ===== Page Heading ===== */}
-      <h1 className="text-4xl font-bold text-center text-blue-800 mb-6">
-        Browse Products
-      </h1>
+      <h2 className="text-3xl font-bold text-blue-900 mb-6 text-center">
+        Browse Our Products
+      </h2>
 
-      {/* ===== Search Bar ===== */}
+      {/* Search Bar */}
       <div className="flex justify-center mb-10">
         <div className="relative w-full max-w-md">
           <input
@@ -50,47 +49,13 @@ function ProductList() {
         </div>
       </div>
 
-      {/* ===== Product Grid ===== */}
+      {/* Product Grid */}
       {filteredProducts.length > 0 ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-          {filteredProducts.map((product) => (
-            <div
-              key={product.id}
-              className="relative group bg-white p-5 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100"
-            >
-              {/* Product Image */}
-              <div className="overflow-hidden rounded-xl">
-                <img
-                  src={product.thumbnail}
-                  alt={product.title}
-                  className="w-full h-52 object-cover rounded-xl group-hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-
-              {/* Product Info */}
-              <div className="mt-4 space-y-2">
-                <h3 className="font-semibold text-lg text-gray-800 truncate group-hover:text-blue-700 transition-colors">
-                  {product.title}
-                </h3>
-                <p className="text-gray-700 font-medium">${product.price}</p>
-
-                {/* Rating Badge */}
-                <div className="inline-flex items-center gap-1 bg-yellow-500 text-white px-3 py-1 rounded-full text-sm font-medium shadow-sm">
-                  <FaStar className="text-white text-sm" />
-                  <span>{product.rating}</span>
-                </div>
-              </div>
-
-              {/* Add to Cart Button */}
-              <button
-                className="w-full mt-4 py-2 bg-blue-600 text-white font-semibold rounded-lg shadow-sm hover:bg-blue-700 transition-all duration-300 hover:scale-[1.02]"
-                onClick={() => alert(`Added ${product.title} to cart!`)}
-              >
-                Add to Cart
-              </button>
-            </div>
-          ))}
-        </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+        {filteredProducts.map((product) => (
+          <ProductItem key={product.id} product={product} />
+        ))}
+      </div>
       ) : (
         <p className="text-center text-gray-500 text-lg mt-10">
           No products found matching your search.
