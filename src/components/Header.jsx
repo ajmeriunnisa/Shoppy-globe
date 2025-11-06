@@ -1,15 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { TiShoppingCart } from "react-icons/ti";
+import { FiMenu, FiX } from "react-icons/fi";
 
 function Header() {
+
+  const [menuOpen,setMenuOpen]=useState(false);
+
   return (
     <header >
-      <nav className="flex justify-between items-center bg-white px-10 py-6 shadow-md">
-        <Link to="/"><h1 className="font-extrabold tracking-tighter text-blue-800 text-3xl">ShoppyGlobe</h1>
+      <nav className="flex justify-between items-center bg-white px-6 py-6 shadow-md">
+        {/* ===== Logo Section ===== */}
+        <Link to="/">
+        <h1 className="font-extrabold tracking-tighter text-blue-800 text-3xl cursor-pointer">
+          ShoppyGlobe
+        </h1>
         </Link>
 
-        <ul className="flex items-center space-x-6 text-[20px] font-semibold">
+        {/* ===== Hamburger Icon (visible only on small screens) ===== */}
+        <div className="md:hidden">
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="text-blue-800 text-3xl focus:outline-none"
+          >
+            {menuOpen ? <FiX/> : <FiMenu/>}
+          </button>
+        </div>
+
+        {/* ===== Desktop Menu ===== */}
+        <ul className="hidden md:flex items-center space-x-6 text-[20px] font-semibold">
           <li>
             <NavLink
               to="/"
@@ -70,6 +89,78 @@ function Header() {
             </NavLink>
           </li>
         </ul>
+
+        {/* ===== Mobile Menu ===== */}
+        {menuOpen && (
+          <div className="absolute top-[72px] left-0 w-full bg-blue-50 shadow-md border-t border-gray-200 md:hidden z-50">
+            <ul className="flex flex-col items-center py-4 space-y-4 text-[20px] font-semibold">
+              <li>
+                <NavLink
+                  to="/"
+                  onClick={() => setMenuOpen(false)}
+                  className={({ isActive }) =>
+                    `px-4 py-2 rounded-md transition-colors duration-200 ${
+                      isActive
+                        ? "bg-blue-600 text-white"
+                        : "text-blue-800 hover:bg-blue-100 hover:text-blue-600"
+                    }`
+                  }
+                >
+                  Home
+                </NavLink>
+              </li>
+
+              <li>
+                <NavLink
+                  to="/products"
+                  onClick={() => setMenuOpen(false)}
+                  className={({ isActive }) =>
+                    `px-4 py-2 rounded-md transition-colors duration-200 ${
+                      isActive
+                        ? "bg-blue-600 text-white"
+                        : "text-blue-800 hover:bg-blue-100 hover:text-blue-600"
+                    }`
+                  }
+                >
+                  Products
+                </NavLink>
+              </li>
+
+              <li>
+                <NavLink
+                  to="/checkout"
+                  onClick={() => setMenuOpen(false)}
+                  className={({ isActive }) =>
+                    `px-4 py-2 rounded-md transition-colors duration-200 ${
+                      isActive
+                        ? "bg-blue-600 text-white"
+                        : "text-blue-800 hover:bg-blue-100 hover:text-blue-600"
+                    }`
+                  }
+                >
+                  Checkout
+                </NavLink>
+              </li>
+
+              <li>
+                <NavLink
+                  to="/cart"
+                  onClick={() => setMenuOpen(false)}
+                  className={({ isActive }) =>
+                    `flex items-center px-4 py-2 rounded-md transition-colors duration-200 ${
+                      isActive
+                        ? "bg-blue-600 text-white"
+                        : "text-blue-800 hover:bg-blue-100 hover:text-blue-600"
+                    }`
+                  }
+                >
+                  <TiShoppingCart size={28} />
+                  <span className="ml-2">Cart</span>
+                </NavLink>
+              </li>
+            </ul>
+          </div>
+        )}
       </nav>
     </header>
   );

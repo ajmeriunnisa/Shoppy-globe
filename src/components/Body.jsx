@@ -29,7 +29,7 @@ function Body() {
   const bestBuys = products.filter((p) => p.price < 9).slice(0, 7);
 
   return (
-    <div className="max-w-8xl mx-auto px-7 space-y-6 cursor-pointer">
+    <div className="max-w-8xl mx-auto px-7 space-y-6 ">
       {/* ===== Welcome Message ===== */}
       <section className="text-center py-8 bg-white mt-4">
         <div className="flex flex-wrap items-center justify-center mb-2 gap-1 sm:gap-2">
@@ -66,7 +66,7 @@ function Body() {
           {newArrivals.map((product) => (
             <div
               key={product.id}
-              className="p-3 hover:border-blue-500 hover:border rounded-xl shadow bg-white"
+              className="p-3 hover:border-blue-500 hover:border rounded-xl shadow bg-white cursor-pointer"
             >
               <Link to={`/product/${product.id}`}>
               
