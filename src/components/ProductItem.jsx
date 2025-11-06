@@ -1,6 +1,7 @@
 import React from "react";
 import { FaStar } from "react-icons/fa";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 ProductItem.propTypes = {
   product: PropTypes.shape({
@@ -15,8 +16,9 @@ ProductItem.propTypes = {
 function ProductItem({ product }) {
 
   return (
-
       <div className="relative group bg-white p-5 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
+        
+        <Link to={`/product/${product.id}`}>
         {/* Product Image */}
         <div className="overflow-hidden rounded-xl">
           <img
@@ -28,7 +30,7 @@ function ProductItem({ product }) {
 
         {/* Product Info */}
         <div className="mt-4 space-y-2">
-          <h3 className="font-semibold text-lg text-gray-800 truncate group-hover:text-blue-700 transition-colors">
+          <h3 className="font-bold text-lg text-gray-800 truncate group-hover:text-blue-700 transition-colors">
             {product.title}
           </h3>
           <p className="text-gray-700 font-medium">${product.price}</p>
@@ -38,19 +40,20 @@ function ProductItem({ product }) {
             <FaStar className="text-white text-sm" />
             <span>{product.rating}</span>
           </div>
-
+          </div>
+         </Link>
+         
           {/* Add to Cart Button */}
           <button
-            className="mt-3 w-full bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 transition"
+            className="mt-3 w-full bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-800 transition cursor-pointer"
             onClick={(e) => {
               e.preventDefault(); 
-              console.log(`Added ${product.title} to cart`);
+              alert(`${product.title} added to cart`);
             }}
-          >
+            >
             Add to Cart
           </button>
         </div>
-      </div>
   );
 }
 

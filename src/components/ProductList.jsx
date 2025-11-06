@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import useProducts from "../CustomHook/useProducts";
 import ProductItem from "./ProductItem";
-import { FaStar, FaSearch } from "react-icons/fa";
+import { FaSearch } from "react-icons/fa";
 
 function ProductList() {
   // Custom hook to fetch products

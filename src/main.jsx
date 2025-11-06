@@ -7,6 +7,7 @@ import Body from './components/Body.jsx'
 import ProductList from './components/ProductList.jsx'
 import Checkout from './components/Checkout.jsx'
 import Cart from './components/Cart.jsx'
+import ProductDetails from './components/ProductDetails.jsx'
 
 // ===== Application Routing Setup =====
 const appRouter=createBrowserRouter([
@@ -29,6 +30,10 @@ const appRouter=createBrowserRouter([
       {
         path:"/cart",
         element:<Cart/>
+      },
+      {
+        path:"/product/:id",
+        element:<ProductDetails/>
       }
     ]
   }

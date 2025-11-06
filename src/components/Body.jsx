@@ -32,12 +32,13 @@ function Body() {
     <div className="max-w-8xl mx-auto px-7 space-y-6 cursor-pointer">
       {/* ===== Welcome Message ===== */}
       <section className="text-center py-8 bg-white mt-4">
-        <div className="flex items-center justify-center mb-2 gap-2">
-          <h1 className="text-4xl font-bold text-blue-800">
+        <div className="flex flex-wrap items-center justify-center mb-2 gap-1 sm:gap-2">
+          <h1 className="text-2xl sm:text-4xl font-bold text-blue-800 text-center">
             Welcome to ShoppyGlobe
           </h1>
-          <FaGlobeAsia className="text-4xl text-blue-800" />
+          <FaGlobeAsia className="text-2xl sm:text-4xl text-blue-800" />
         </div>
+
 
         <p className="text-gray-600 text-lg">
           Explore new arrivals and grab the best deals under $10!
@@ -67,6 +68,8 @@ function Body() {
               key={product.id}
               className="p-3 hover:border-blue-500 hover:border rounded-xl shadow bg-white"
             >
+              <Link to={`/product/${product.id}`}>
+              
               {/* Product Image */}
               <div className="flex justify-center items-center h-40">
                 <img
@@ -84,6 +87,7 @@ function Body() {
                 <FaStar className="text-yellow-500" />
                 <p className="font-medium">{product.rating}</p>
               </div>
+              </Link>
             </div>
 
           ))}
@@ -103,6 +107,8 @@ function Body() {
               key={product.id}
               className="p-4 hover:border hover:border-blue-500 rounded-xl shadow bg-white"
             >
+              <Link to={`/product/${product.id}`}>
+            
               {/* Product Image */}
               <div className="flex justify-center items-center h-40">
 
@@ -120,6 +126,7 @@ function Body() {
               <p className="text-green-600 text-sm mt-1">
                 Save More — Limited Time!
               </p>
+              </Link>
             </div>
           ))}
         </div>
