@@ -8,12 +8,14 @@ import ProductList from './components/ProductList.jsx'
 import Checkout from './components/Checkout.jsx'
 import Cart from './components/Cart.jsx'
 import ProductDetails from './components/ProductDetails.jsx'
+import ErrorPage from './components/ErrorPage.jsx'
 
 // ===== Application Routing Setup =====
 const appRouter=createBrowserRouter([
   {
     path:'/',
     element:<App/>,
+    errorElement:<ErrorPage/>,
     children:[
       {
        path:"/",
