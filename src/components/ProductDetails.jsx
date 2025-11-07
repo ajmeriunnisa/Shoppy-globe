@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams} from "react-router-dom";
 import { FaStar } from "react-icons/fa";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart, removeFromCart, updateQuantity } from "../utils/cartSlice";
 
 function ProductDetails() {
   // Get product ID from URL route parameters
@@ -10,6 +12,12 @@ function ProductDetails() {
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  const dispatch = useDispatch();
+  const cartItems = useSelector((state) => state.cart.cartItems);
+
+   // Find the product in the cart (if already added)
+  const cartItem = cartItems.find((item) => item.id === Number(id));
 
   // Fetch product details when component mounts
   useEffect(() => {
@@ -30,6 +38,27 @@ function ProductDetails() {
 
     fetchProduct();
   }, [id]);
+
+  // Add product to cart
+  function handleAddToCart(){
+    dispatch(addToCart({ ...product, quantity: 1 }));
+  };
+
+  // Increase product quantity
+  const handleIncrease = () => {
+    dispatch(updateQuantity({ id: product.id, quantity: cartItem.quantity + 1 }));
+  };
+
+  // Decrease product quantity
+  const handleDecrease = () => {
+    if (cartItem.quantity > 1) {
+      dispatch(updateQuantity({ id: product.id, quantity: cartItem.quantity - 1 }));
+    } else {
+      // Remove from cart if quantity hits 0
+      dispatch(removeFromCart(product.id));
+    }
+  };
+
 
   // Handle loading state
   if (loading) {
@@ -100,13 +129,37 @@ function ProductDetails() {
             <p className="text-gray-500 text-sm">({product.stock} in stock)</p>
           </div>
 
-          {/* Add to Cart Button */}
-          <button
-            className="mt-4 w-full bg-blue-600 text-white py-3 rounded-lg font-semibold text-lg hover:bg-blue-700 transition"
-            onClick={() => alert(`Added ${product.title} to cart!`)}
-          >
-            Add to Cart
-          </button>
+          {/* Add to Cart or Quantity Controls */}
+          {!cartItem ? (
+            <button
+              onClick={handleAddToCart}
+              className="mt-3 px-8 py-3 bg-blue-600 text-white font-bold text-xl rounded-lg shadow-md hover:bg-blue-700 transition-all duration-300"
+            >
+              Add to Cart
+            </button>
+          ) : (
+            <div className="flex items-center gap-4 mt-3">
+
+              {/* Decrease Quantity */}
+              <button
+                onClick={handleDecrease}
+                className="px-4 py-2 bg-blue-500 text-white font-bold rounded-md text-lg hover:bg-blue-600 transition"
+              >
+                −
+              </button>
+
+              {/* Display Quantity */}
+              <span className="text-xl font-bold text-blue-900">{cartItem.quantity}</span>
+
+              {/* Increase Quantity */}
+              <button
+                onClick={handleIncrease}
+                className="px-4 py-2 bg-blue-500 text-white font-bold rounded-md text-lg hover:bg-blue-600 transition"
+              >
+                +
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </div>
