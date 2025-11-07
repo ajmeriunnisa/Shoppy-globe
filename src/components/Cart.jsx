@@ -32,7 +32,7 @@ function Cart() {
             Your cart is empty
           </p>
 
-          <Link to="/">
+          <Link to="/products">
             <button className="flex items-center gap-2 px-8 py-3 bg-blue-600 text-white font-semibold text-lg rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg hover:translate-x-1 transition-all duration-300">
               Go Shop Now
               <FaArrowRight className="text-white text-xl" />

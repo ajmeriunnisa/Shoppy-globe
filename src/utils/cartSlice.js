@@ -11,22 +11,22 @@ const cartSlice = createSlice({
       const existing = state.cartItems.find((i) => i.id === item.id);
 
       if (existing) {
-        existing.quantity += 1;
+        existing.quantity += item.quantity;
       } else {
-        state.cartItems.push({ ...item, quantity: 1 });
+        state.cartItems.push(item);
       }
     },
 
     removeFromCart: (state, action) => {
       state.cartItems = state.cartItems.filter(
-        (item) => item.id !== action.payload
+        (i) => i.id !== action.payload
       );
     },
 
     updateQuantity: (state, action) => {
       const { id, quantity } = action.payload;
       const existing = state.cartItems.find((i) => i.id === id);
-      if (existing && quantity > 0) existing.quantity = quantity;
+      if (existing) existing.quantity = quantity;
     },
 
     clearCart: (state) => {
