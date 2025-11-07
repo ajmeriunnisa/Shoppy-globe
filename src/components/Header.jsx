@@ -2,10 +2,17 @@ import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { TiShoppingCart } from "react-icons/ti";
 import { FiMenu, FiX } from "react-icons/fi";
+import { useSelector } from "react-redux";
 
 function Header() {
 
   const [menuOpen,setMenuOpen]=useState(false);
+
+  // Get the cart items from Redux store 
+  const cartItems = useSelector((state) => state.cart.cartItems);
+
+  // Calculate total quantity 
+  const cartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
 
   return (
     <header >
@@ -85,7 +92,14 @@ function Header() {
                 }`
               }
             >
+            <div className="relative">
               <TiShoppingCart size={28} />
+              {cartCount > 0 && (
+                <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs font-bold px-1.5 py-0.5 rounded-full">
+                  {cartCount}
+                </span>
+              )}
+            </div>
             </NavLink>
           </li>
         </ul>
