@@ -24,6 +24,7 @@ function CartItem({ item }) {
         <div className="flex flex-col md:flex-row items-center justify-between bg-white rounded-xl shadow-sm border p-4 hover:shadow-md transition-all duration-200">
             {/* Product Image */}
             <img
+                loading='lazy'
                 src={item.thumbnail}
                 alt={item.title}
                 className="w-28 h-28 object-cover rounded-md mb-3 md:mb-0"

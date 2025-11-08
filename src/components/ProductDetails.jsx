@@ -90,6 +90,7 @@ function ProductDetails() {
         {/* Product Image */}
         <div className="flex justify-center">
           <img
+            loading='lazy'
             src={product.thumbnail}
             alt={product.title}
             className="rounded-xl w-full max-w-md object-cover"
@@ -133,7 +134,7 @@ function ProductDetails() {
           {!cartItem ? (
             <button
               onClick={handleAddToCart}
-              className="mt-3 px-8 py-3 bg-blue-600 text-white font-bold text-xl rounded-lg shadow-md hover:bg-blue-700 transition-all duration-300"
+              className="mt-3 px-8 py-3 bg-blue-600 text-white font-bold text-xl rounded-lg shadow-md hover:bg-blue-700 transition-all duration-300 cursor-pointer"
             >
               Add to Cart
             </button>
@@ -143,7 +144,7 @@ function ProductDetails() {
               {/* Decrease Quantity */}
               <button
                 onClick={handleDecrease}
-                className="px-4 py-2 bg-blue-500 text-white font-bold rounded-md text-lg hover:bg-blue-600 transition"
+                className="px-4 py-2 bg-blue-500 text-white font-bold rounded-md text-lg hover:bg-blue-600 transition cursor-pointer"
               >
                 −
               </button>
@@ -154,7 +155,7 @@ function ProductDetails() {
               {/* Increase Quantity */}
               <button
                 onClick={handleIncrease}
-                className="px-4 py-2 bg-blue-500 text-white font-bold rounded-md text-lg hover:bg-blue-600 transition"
+                className="px-4 py-2 bg-blue-500 text-white font-bold rounded-md text-lg hover:bg-blue-600 transition cursor-pointer"
               >
                 +
               </button>

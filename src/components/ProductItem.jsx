@@ -56,6 +56,7 @@ function ProductItem({ product }) {
         {/* Product Image */}
         <div className="overflow-hidden rounded-xl">
           <img
+            loading='lazy'
             src={product.thumbnail}
             alt={product.title}
             className="w-full h-52 object-cover rounded-xl group-hover:scale-105 transition-transform duration-300"

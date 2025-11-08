@@ -47,7 +47,7 @@ function Body() {
       {/* ===== Shop Now Button ===== */}
         <div className="flex justify-center items-center">
           <Link to="/products">
-            <button className="mt-4 flex items-center gap-2 px-8 py-3 bg-blue-600 text-white font-bold text-xl rounded-lg shadow-md hover:bg-blue-700 hover:translate-x-0.5 transition-all duration-300">
+            <button className="mt-4 flex items-center gap-2 px-8 py-3 bg-blue-600 text-white font-bold text-xl rounded-lg shadow-md hover:bg-blue-700 hover:translate-x-0.5 transition-all duration-300 cursor-pointer">
               Shop Now
               <FaArrowRight className="text-xl" />
             </button>
@@ -73,6 +73,7 @@ function Body() {
               {/* Product Image */}
               <div className="flex justify-center items-center h-40">
                 <img
+                  loading='lazy'
                   src={product.thumbnail}
                   alt={product.title}
                   className="w-30 h-30  rounded-lg mb-3"
@@ -113,6 +114,7 @@ function Body() {
               <div className="flex justify-center items-center h-40">
 
                 <img
+                  loading='lazy'
                   src={product.thumbnail}
                   alt={product.title}
                   className="w-30 h-30  rounded-lg mb-3"

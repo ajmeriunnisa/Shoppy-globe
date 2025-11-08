@@ -1,41 +1,71 @@
-import { StrictMode } from 'react'
+import { lazy, StrictMode, Suspense } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
-import App from './App.jsx'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import Body from './components/Body.jsx'
-import ProductList from './components/ProductList.jsx'
-import Checkout from './components/Checkout.jsx'
-import Cart from './components/Cart.jsx'
-import ProductDetails from './components/ProductDetails.jsx'
-import ErrorPage from './components/ErrorPage.jsx'
 
-// ===== Application Routing Setup =====
-const appRouter=createBrowserRouter([
+// ===== Lazy Loading Components for Code Splitting =====
+const App = lazy(() => import("./App.jsx"));
+const Body = lazy(() => import("./components/Body.jsx"));
+const ProductList = lazy(() => import("./components/ProductList.jsx"));
+const Checkout = lazy(() => import("./components/Checkout.jsx"));
+const Cart = lazy(() => import("./components/Cart.jsx"));
+const ProductDetails = lazy(() => import("./components/ProductDetails.jsx"));
+const ErrorPage = lazy(() => import("./components/ErrorPage.jsx"));
+
+// ===== Application Routing Setup with Lazy Loaded Components =====
+const appRouter = createBrowserRouter([
   {
-    path:'/',
-    element:<App/>,
-    errorElement:<ErrorPage/>,
-    children:[
+    path: "/",
+    element: (
+      <Suspense fallback={<div className="text-center py-20 text-lg font-semibold text-gray-600">Loading App...</div>}>
+        <App />
+      </Suspense>
+    ),
+    errorElement: (
+      <Suspense fallback={<div className="text-center py-20 text-lg font-semibold text-gray-600">Loading Error Page...</div>}>
+        <ErrorPage />
+      </Suspense>
+    ),
+    children: [
       {
-       path:"/",
-       element:<Body/>
+        path: "/",
+        element: (
+          <Suspense fallback={<div className="text-center py-10">Loading Home...</div>}>
+            <Body />
+          </Suspense>
+        ),
       },
       {
-        path:"/products",
-        element:<ProductList/>
+        path: "/products",
+        element: (
+          <Suspense fallback={<div className="text-center py-10">Loading Products...</div>}>
+            <ProductList />
+          </Suspense>
+        ),
       },
       {
-      path:"/checkout",
-      element:<Checkout/>
+        path: "/checkout",
+        element: (
+          <Suspense fallback={<div className="text-center py-10">Loading Checkout...</div>}>
+            <Checkout />
+          </Suspense>
+        ),
       },
       {
-        path:"/cart",
-        element:<Cart/>
+        path: "/cart",
+        element: (
+          <Suspense fallback={<div className="text-center py-10">Loading Cart...</div>}>
+            <Cart />
+          </Suspense>
+        ),
       },
       {
-        path:"/product/:id",
-        element:<ProductDetails/>
+        path: "/product/:id",
+        element: (
+          <Suspense fallback={<div className="text-center py-10">Loading Product Details...</div>}>
+            <ProductDetails />
+          </Suspense>
+        ),
       }
     ]
   }
@@ -44,5 +74,7 @@ const appRouter=createBrowserRouter([
 
 // ===== Rendering the App to the DOM =====
 createRoot(document.getElementById('root')).render(
-  <RouterProvider router={appRouter}></RouterProvider>
+  <Suspense fallback={<div className="text-center py-20 text-lg font-semibold text-gray-600">Initializing Application...</div>}>
+    <RouterProvider router={appRouter} />
+  </Suspense>
 )
