@@ -1,16 +1,26 @@
-import React, { useState } from "react";
+import React from "react";
 import useProducts from "../CustomHook/useProducts";
 import ProductItem from "./ProductItem";
 import { FaSearch } from "react-icons/fa";
+import { useDispatch, useSelector } from "react-redux";
+import { setQuery, selectSearchQuery } from "../utils/searchSlice";
 
 function ProductList() {
   // Custom hook to fetch products
   const { products, loading, error } = useProducts();
 
-  // Local state for search query
-  const [searchTerm, setSearchTerm] = useState("");
+  // Access the Redux search term
+  const searchTerm = useSelector(selectSearchQuery);
 
-  // Filter products based on search term
+  // Dispatch to update Redux search state
+  const dispatch = useDispatch();
+
+  // Handle input changes by dispatching Redux action
+  function handleSearchChange(e){
+    dispatch(setQuery(e.target.value));
+  };
+
+  // Filter products based on search term from Redux
   const filteredProducts = products.filter((product) =>
     product.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
@@ -42,7 +52,7 @@ function ProductList() {
             type="text"
             placeholder="Search for products..."
             value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
+            onChange={handleSearchChange}
             className="w-full py-3 px-4 pl-12 rounded-xl border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400 text-gray-700"
           />
           <FaSearch className="absolute top-1/2 left-4 transform -translate-y-1/2 text-gray-400 text-lg" />
