@@ -109,4 +109,3 @@ It demonstrates fetching product data, managing a shopping cart, using Redux sta
 
 (uploaded the project on github and below is the github repository link)
 https://github.com/ajmeriunnisa/Shoppy-globe
-

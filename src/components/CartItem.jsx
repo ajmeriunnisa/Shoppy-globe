@@ -1,7 +1,18 @@
 import React from 'react'
 import { FaTrash } from 'react-icons/fa';
+import PropTypes from "prop-types";
 import { useDispatch } from 'react-redux'
 import { removeFromCart, updateQuantity } from '../utils/cartSlice';
+
+CartItem.PropTypes = {
+  item: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string,
+    price: PropTypes.number,
+    quantity: PropTypes.number.isRequired,
+    thumbnail: PropTypes.string,
+  }).isRequired,
+};
 
 function CartItem({ item }) {
     const dispatch = useDispatch();
