@@ -28,7 +28,7 @@ function Header() {
         <div className="md:hidden">
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="text-blue-800 text-3xl focus:outline-none"
+            className="text-blue-800 text-3xl focus:outline-none cursor-pointer"
           >
             {menuOpen ? <FiX/> : <FiMenu/>}
           </button>

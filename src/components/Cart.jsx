@@ -33,7 +33,7 @@ function Cart() {
           </p>
 
           <Link to="/products">
-            <button className="flex items-center gap-2 px-8 py-3 bg-blue-600 text-white font-semibold text-lg rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg hover:translate-x-1 transition-all duration-300">
+            <button className="flex items-center gap-2 px-8 py-3 bg-blue-600 text-white font-semibold text-lg rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg hover:translate-x-1 transition-all duration-300 cursor-pointer">
               Go Shop Now
               <FaArrowRight className="text-white text-xl" />
             </button>
@@ -54,12 +54,17 @@ function Cart() {
               Total: ${totalAmount.toFixed(2)}
             </h3>
 
-            <button
+            <div className="flex justify-center items-center gap-6">
+              <button
               onClick={() => dispatch(clearCart())}
-              className="bg-red-500 text-white px-6 py-2 rounded-lg font-semibold hover:bg-red-600 transition-all duration-200"
+              className="bg-red-500 text-white px-6 py-2 rounded-lg font-semibold hover:bg-red-600 transition-all duration-200 cursor-pointer"
             >
               Clear Cart
             </button>
+            <Link to="/checkout"><button className="bg-blue-500 text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-600 transition-all duration-200 cursor-pointer">
+              Checkout
+              </button></Link>
+            </div>
           </div>
         </>
       )}

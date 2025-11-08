@@ -31,7 +31,7 @@ function Body() {
   return (
     <div className="max-w-8xl mx-auto px-7 space-y-6 ">
       {/* ===== Welcome Message ===== */}
-      <section className="text-center py-8 bg-white mt-4">
+      <section className="text-center py-6 bg-white">
         <div className="flex flex-wrap items-center justify-center mb-2 gap-1 sm:gap-2">
           <h1 className="text-2xl sm:text-4xl font-bold text-blue-800 text-center">
             Welcome to ShoppyGlobe
@@ -47,9 +47,9 @@ function Body() {
       {/* ===== Shop Now Button ===== */}
         <div className="flex justify-center items-center">
           <Link to="/products">
-            <button className="mt-4 flex items-center gap-2 px-8 py-3 bg-blue-600 text-white font-bold text-2xl rounded-lg shadow-md hover:bg-blue-700 hover:translate-x-0.5 transition-all duration-300">
+            <button className="mt-4 flex items-center gap-2 px-8 py-3 bg-blue-600 text-white font-bold text-xl rounded-lg shadow-md hover:bg-blue-700 hover:translate-x-0.5 transition-all duration-300">
               Shop Now
-              <FaArrowRight className="text-2xl" />
+              <FaArrowRight className="text-xl" />
             </button>
           </Link>
         </div>

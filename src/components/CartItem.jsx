@@ -39,14 +39,14 @@ function CartItem({ item }) {
             <div className="flex items-center gap-3">
                 <button
                     onClick={() => handleQuantityChange("decrease")}
-                    className="bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold px-3 py-1 rounded-md text-lg"
+                    className="bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold px-3 py-1 rounded-md text-lg cursor-pointer"
                 >
                     -
                 </button>
                 <span className="font-semibold text-blue-800">{item.quantity}</span>
                 <button
                     onClick={() => handleQuantityChange("increase")}
-                    className="bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold px-3 py-1 rounded-md text-lg"
+                    className="bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold px-3 py-1 rounded-md text-lg cursor-pointer"
                 >
                     +
                 </button>
@@ -55,7 +55,7 @@ function CartItem({ item }) {
             {/* Remove Button */}
             <button
                 onClick={handleRemove}
-                className="text-red-600 hover:text-red-800 ml-4 mt-3 md:mt-0"
+                className="text-red-600 hover:text-red-800 ml-4 mt-3 md:mt-0 cursor-pointer"
             >
                 <FaTrash size={18} />
             </button>

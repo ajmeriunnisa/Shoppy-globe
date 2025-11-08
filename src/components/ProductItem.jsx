@@ -83,7 +83,7 @@ function ProductItem({ product }) {
           // Show Add to Cart initially
           <button
             onClick={handleAddToCart}
-            className="px-6 py-2 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition-all duration-200"
+            className="px-6 py-2 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition-all duration-200 cursor-pointer"
           >
             Add to Cart
           </button>
@@ -92,14 +92,14 @@ function ProductItem({ product }) {
           <div className="flex justify-center items-center gap-4">
             <button
               onClick={() => handleQuantityChange("decrease")}
-              className="bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold px-3 py-1 rounded-md text-lg"
+              className="bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold px-3 py-1 rounded-md text-lg cursor-pointer"
             >
               -
             </button>
             <span className="font-semibold text-blue-800">{quantity}</span>
             <button
               onClick={() => handleQuantityChange("increase")}
-              className="bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold px-3 py-1 rounded-md text-lg"
+              className="bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold px-3 py-1 rounded-md text-lg cursor-pointer"
             >
               +
             </button>
