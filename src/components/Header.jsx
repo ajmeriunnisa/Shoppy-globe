@@ -3,16 +3,14 @@ import { Link, NavLink } from "react-router-dom";
 import { TiShoppingCart } from "react-icons/ti";
 import { FiMenu, FiX } from "react-icons/fi";
 import { useSelector } from "react-redux";
+import { selectCartCount } from "../utils/cartSlice";
 
 function Header() {
 
   const [menuOpen,setMenuOpen]=useState(false);
-
-  // Get the cart items from Redux store 
-  const cartItems = useSelector((state) => state.cart.cartItems);
-
-  // Calculate total quantity 
-  const cartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
+  
+  // Accessing total number of items in the cart using Redux selector
+  const cartCount = useSelector(selectCartCount);
 
   return (
     <header >

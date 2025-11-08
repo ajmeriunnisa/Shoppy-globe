@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams} from "react-router-dom";
 import { FaStar } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart, removeFromCart, updateQuantity } from "../utils/cartSlice";
+import { addToCart, removeFromCart, selectCartItems, updateQuantity } from "../utils/cartSlice";
 
 function ProductDetails() {
   // Get product ID from URL route parameters
@@ -14,7 +14,9 @@ function ProductDetails() {
   const [error, setError] = useState(null);
 
   const dispatch = useDispatch();
-  const cartItems = useSelector((state) => state.cart.cartItems);
+
+  // Fetch all items in the cart from Redux store
+  const cartItems = useSelector(selectCartItems);
 
    // Find the product in the cart (if already added)
   const cartItem = cartItems.find((item) => item.id === Number(id));

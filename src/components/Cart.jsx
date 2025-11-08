@@ -1,20 +1,19 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import CartItem from "./CartItem";
-import { clearCart } from "../utils/cartSlice";
+import { clearCart, selectCartItems, selectCartTotal } from "../utils/cartSlice";
 import { Link } from "react-router-dom";
 import { FaArrowRight } from "react-icons/fa";
 import { TiShoppingCart } from "react-icons/ti";
 
 function Cart() {
   const dispatch = useDispatch();
-  const cartItems = useSelector((state) => state.cart.cartItems);
 
-  // Calculate total price
-  const totalAmount = cartItems.reduce(
-    (total, item) => total + item.price * item.quantity,
-    0
-  );
+  // Fetch all items in the cart from Redux store
+  const cartItems = useSelector(selectCartItems);
+
+  // Compute total amount using Redux selector
+  const totalAmount = useSelector(selectCartTotal);
 
   return (
     <div className="max-w-5xl mx-auto mt-10 px-4">

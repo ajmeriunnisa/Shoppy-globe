@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
-import { clearCart } from "../utils/cartSlice";
+import { clearCart, selectCartItems, selectCartTotal } from "../utils/cartSlice";
 import { TiShoppingCart } from "react-icons/ti";
 import { FaArrowRight } from "react-icons/fa";
 import { GiPartyPopper } from "react-icons/gi";
@@ -11,13 +11,10 @@ function Checkout() {
   const navigate = useNavigate();
 
   // Access cart items from Redux store
-  const cartItems = useSelector((state) => state.cart.cartItems);
+  const cartItems = useSelector(selectCartItems);
 
-  // Calculate total price
-  const totalPrice = cartItems.reduce(
-    (total, item) => total + item.price * item.quantity,
-    0
-  );
+  // Compute total price using Redux selector
+  const totalPrice = useSelector(selectCartTotal)
 
   // Form state
   const [formData, setFormData] = useState({

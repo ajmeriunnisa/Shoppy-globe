@@ -37,4 +37,20 @@ const cartSlice = createSlice({
 
 export const { addToCart, removeFromCart, updateQuantity, clearCart } = cartSlice.actions
 
-export default cartSlice.reducer
+export default cartSlice.reducer;
+
+// === Selectors ===
+
+// Get the full list of items in the cart
+export const selectCartItems = (state) => state.cart.cartItems;
+
+// Calculate the total price of all items in the cart
+export const selectCartTotal = (state) =>
+  state.cart.cartItems.reduce(
+    (sum, item) => sum + item.price * item.quantity,
+    0
+  );
+
+// Count total number of items (sum of quantities)
+export const selectCartCount = (state) =>
+  state.cart.cartItems.reduce((count, item) => count + item.quantity, 0);
