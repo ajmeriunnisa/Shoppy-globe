@@ -165,7 +165,7 @@ function Checkout() {
             {/* ====== Submit Button ====== */}
             <button
               type="submit"
-              className="bg-blue-600 text-white py-3 mt-3 text-lg rounded-lg font-semibold hover:bg-blue-700 transition-all duration-300"
+              className="bg-blue-600 text-white py-3 mt-3 text-lg rounded-lg font-semibold hover:bg-blue-700 transition-all duration-300 cursor-pointer"
             >
               Place Order
             </button>
